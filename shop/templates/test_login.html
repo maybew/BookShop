@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>
+			Log in page!
+		</title>
+	</head>
+	<body>
+		<form action="" method="post">
+			<label for="email">Email:</label>
+			<input type="text" name="email" />
+			<label for="password">Password:</label>
+			<input type="password" name="password" />
+			<input type="submit" />
+		</form>
+		<div>
+			{% if error == 1 %}
+				The use does not exist.
+			{% endif %}
+			{% if error == 2 %}
+				Email and password does not match.
+			{% endif %}
+			{% if error == 3 %}
+				Please log in.
+			{% endif %}
+			{% if error_message %}
+				{% for k, v in error_message %}
+					{{k}}:{{v}}
+				{% endfor %}
+			{% endif %}			
+		</div>
+		</div>
+	</body>
+</html>

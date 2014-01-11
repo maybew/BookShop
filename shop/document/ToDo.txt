@@ -1,0 +1,2 @@
+1. Index 排序，实现popular与%off。需在表单中加入新属性。
+2. sale状态，需要加入%off属性。

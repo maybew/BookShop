@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>
+			This is the search page
+		</title>
+	</head>
+	<body>
+		<div id="search_block">
+			Search:
+			<form action="/search" method="get">
+				<input type="text" name="keyword" />
+				<select name="category">
+					<option value="all" selected="selected">All</option>
+					{% for c in category %}
+					<option value="{{c.name}}">{{c.name}}</option>
+					{% endfor %}
+				</select>
+				<input type="submit" />
+			</form>
+		</div>
+		<div name="sort_block">
+			<form action="/index" method="get">
+				<select name="sort">
+					<option value="-time" {% if sort == "-time"%} selected="selected" {% endif %}>Newest</option>
+					<option value="popular" {% if sort == "popular"%} selected="selected" {% endif %}>Popular</option>
+					<option value="title" {% if sort == "title"%} selected="selected" {% endif %}>Title</option>
+					<option value="price" {% if sort == "price"%} selected="selected" {% endif %}>Lowest Price</option>
+					<option value="-price" {% if sort == "-price"%} selected="selected" {% endif %}>Highest Price</option>
+					<option value="off" {% if sort == "off"%} selected="selected" {% endif %}>Highest Off</option>
+				</select>
+				<input type="hidden" name="keyword" value="{{search}}" />
+				<input type="submit" />
+			</form>
+		</div>
+		<div id="display_block">
+			{% for i in item %}
+			<div>
+				<img src="{{MEDIA_URL}}{{i.image}}" /><br>
+				<a href="/item/{{i.id}}">{{i.title}}</a><br>
+				{{i.price}}<br>
+				{{i.author}}<br>
+				{{i.categorys}}
+			</div>
+			<hr>
+			{% endfor %}
+		</div>
+		<div name="page_block">
+			{% for i in total_page %}
+				{% if i == page %}
+			{% endfor %}
+					{{ i }}
+				{% else %}
+					<a href="/search/?sort={{sort|default:"-time"}}&page={{i}}">{{ i }}</a>
+				{% endif %}			
+			{% endfor %}
+		</div>
+	</body>
+</html>

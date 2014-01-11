@@ -1,0 +1,11 @@
+{% if request.session.account %}
+<div>
+	{% for i in request.session.cart %}
+		<a href="/item/{{i.item.id}}">{{i.item.title}}</a> num:s{{i.quantity}}
+	{% endfor %}
+</div>
+
+{% else %}
+	Hello
+{% endif %}
+

@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>
+			Test for Sign Up!
+		</title>
+	</head>
+	<body>
+		<form action="/signup/" method="post">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><input type="text" name="address" /></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td>State:</td>
+					<td>
+						<select name="state">
+							{% for k, v in state_choice %}
+							<option value="{{ k }}">{{ v }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Zip:</td>
+					<td><input type="text" name="zip" /></td>
+				</tr>
+				<tr>
+					<td>Phone:</td>
+					<td><input type="tel" name="phone" /></td>
+				</tr>
+				<tr>
+					<input type="submit" />
+				</tr>
+			</table>
+		</form>
+		<div>
+			{% if error_message %}
+				{% for k, v in error_message %}
+					{{k}}:{{v}}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</body>
+</html>

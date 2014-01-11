@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>
+			Item detail
+		</title>
+	</head>
+	<body>
+		<h1>{{item.title}}</h1>
+		<div>
+			<img src="{{MEDIA_URL}}{{item.image}}"/>
+		</div>
+		<hr>
+		{{item.price}}<br />
+		{{item.status}}<br />
+		{{item.author}}<br />
+		{{item.category.name}}<br />
+		{{item.description}}
+		<form action="/add_to_cart" method="get">
+			<input type="number" max="10" min="1" name="quantity" />
+			<input type="hidden" name="item_id" value="{{item.id}}" />
+			<input type="submit" />
+		</form>
+		{% include "test_cart_head.html" %}
+	</body>
+</html>

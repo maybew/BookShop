@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>
+			Profile page!
+		</title>
+	</head>
+	<body>
+		<label for="email">Email:</label>
+		<p>{{ request.session.account.email }}</p>
+		<label for="name">Name:</label>
+		<p>{{ request.session.account.name }}</p>
+		
+		<form action="update/" method="post">
+			<label for="address">Address:</label>
+			<input type="text" name="address" value="{{ request.session.account.address }}"/>
+			<label for="city">City:</label>
+			<input type="text" name="city" value="{{ request.session.account.city }}"/>
+			<label for="phone">Phone:</label>
+			<input type="text" name="phone" value="{{ request.session.account.phone }}"/>
+			<label for="zip">Zip:</label>
+			<input type="text" name="zip" value="{{ request.session.account.zip }}"/>
+			<label for="state">State:</label>
+			<select name="state">
+				{% for k, v in state_choice %}
+					<option value="{{ k }}" {% if k == request.session.account.state %} selected="selected" {% endif %} >{{ v }}</option>
+				{% endfor %}
+			</select>
+			<input type="submit" />
+		</form>
+		
+		<hr />
+		
+		<form action="password/" method="post">
+			<label for="old_password">Old Password:</label>
+			<input type="password" name="old_password" />
+			<label for="new_password">New Password:</label>
+			<input type="password" name="new_password" />
+			<label for="confirm_password">Confirm Password:</label>
+			<input type="password" name="confirm_password" />
+			<input type="submit" />
+		</form>
+		
+		<hr>
+		
+		<a href="/logout/">Logout</a>
+	</body>
+</html>
